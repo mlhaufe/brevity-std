@@ -32,6 +32,6 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@final-hill/multi-key-map": "^1.0.2"
+    "@mlhaufe/brevity": "github:mlhaufe/brevity#v0.5.0"
   }
 }
