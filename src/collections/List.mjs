@@ -21,6 +21,29 @@ const AppendTrait = trait('append', {
 })
 
 /**
+ * Returns the element at the specified index
+ * @param {number} i - The index of the element to return
+ * @returns {any} - The element at the specified index
+ * @example
+ * list(1, 2, 3).at(0) // 1
+ * list(1, 2, 3).at(1) // 2
+ * list(1, 2, 3).at(2) // 3
+ */
+const AtTrait = trait('at', {
+    Nil(self, i) { throw new Error('Index out of bounds') },
+    Cons(self, i) {
+        const { head, tail } = self
+        if (i === 0) return head
+        else if (i > 0) return tail.at(i - 1)
+
+        const len = self.length()
+        if (i < -len)
+            throw new Error('Index out of bounds')
+        return self.at(self.length() + i)
+    }
+})
+
+/**
  * Concatenates two lists
  * @param {List} xs - The second list
  * @returns {List} - The concatenated list
@@ -89,7 +112,6 @@ const FoldRightTrait = trait('foldRight', {
 
 /**
  * Creates a list from a range of numbers
- * in order or in reverse order
  * @param {number} start - The start of the range
  * @param {number} end - The end of the range
  * @param {number} step - The step of the range (defaults to 1)
@@ -262,9 +284,9 @@ const ZipWithTrait = trait('zipWith', {
  * The List data type
  */
 export const List = complect(ListData, [
-    AppendTrait, ConcatTrait, FilterTrait, FirstTrait, FoldLeftTrait, FoldRightTrait,
-    JoinTrait, LastTrait, LengthTrait, MapTrait, ReverseTrait, ScanLeftTrait,
-    ScanRightTrait, TakeTrait, TakeWhileTrait, ZipWithTrait
+    AppendTrait, AtTrait, ConcatTrait, FilterTrait, FirstTrait, FoldLeftTrait,
+    FoldRightTrait, JoinTrait, LastTrait, LengthTrait, MapTrait, ReverseTrait,
+    ScanLeftTrait, ScanRightTrait, TakeTrait, TakeWhileTrait, ZipWithTrait
 ])
 
 /**

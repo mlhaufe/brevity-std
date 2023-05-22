@@ -24,6 +24,23 @@ describe('List tests', () => {
         expect(xs.append(4)).toBe(numList(1, 2, 3, 4))
     })
 
+    test('at', () => {
+        const numList = list(Number)
+
+        const xs = numList(1, 2, 3)
+        expect(xs.at(0)).toBe(1)
+        expect(xs.at(1)).toBe(2)
+        expect(xs.at(2)).toBe(3)
+        expect(() => xs.at(3)).toThrow()
+        expect(xs.at(-1)).toBe(3)
+        expect(xs.at(-2)).toBe(2)
+        expect(xs.at(-3)).toBe(1)
+        expect(() => xs.at(-4)).toThrow()
+
+        const ys = numList()
+        expect(() => ys.at(0)).toThrow()
+    })
+
     test('concat', () => {
         const numList = list(Number)
 
