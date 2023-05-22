@@ -2,10 +2,16 @@
     "name": "brevity-std",
     "version": "0.1.0",
     "description": "A standard library for use with @mlhaufe/brevity",
-    "module": "dist/index.mjs",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./index.mjs"
+        }
+    },
     "type": "module",
     "scripts": {
-        "build": "webpack && npm install --prefix dist --package-lock-only",
+        "build": "webpack && npm install --prefix dist --package-lock-only && npm run emit-types",
+        "emit-types": "tsc -p jsconfig.declaration.json",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
     },
     "repository": {
@@ -29,10 +35,10 @@
         "@types/jest": "^29.5.1",
         "copy-webpack-plugin": "^11.0.0",
         "jest": "^29.5.0",
-        "webpack": "^5.82.1",
+        "webpack": "^5.83.1",
         "webpack-cli": "^5.1.1"
     },
     "dependencies": {
-        "@mlhaufe/brevity": "^0.11.0"
+        "@mlhaufe/brevity": "^0.12.0"
     }
 }

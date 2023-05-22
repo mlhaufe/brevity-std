@@ -1,1 +1,0 @@
-{"version":3,"file":"index.mjs","mappings":"AAAAA,QAAQC,IAAI","sources":["webpack://brevity-std/./src/index.mjs"],"sourcesContent":["console.log('hello world')"],"names":["console","log"],"sourceRoot":""}
