@@ -1,6 +1,6 @@
 {
-    "name": "brevity-std",
-    "version": "0.1.0",
+    "name": "@mlhaufe/brevity-std",
+    "version": "0.1.1",
     "description": "A standard library for use with @mlhaufe/brevity",
     "exports": {
         ".": {
