@@ -9,12 +9,14 @@ describe('List tests', () => {
         expect(xs.head).toBe(1)
         expect(xs.tail.head).toBe(2)
         expect(xs.tail.tail.head).toBe(3)
-        expect(xs.tail.tail.tail).toBe(xs.Nil)
+        expect(xs.tail.tail.tail).toBe(numList())
 
         const ys = numList()
         expect(ys).toBeDefined()
 
-        expect(() => numList(1, '2', 3)).toThrow()
+        expect(() =>
+            numList(1, '2', 3)
+        ).toThrow()
     })
 
     test('append', () => {
