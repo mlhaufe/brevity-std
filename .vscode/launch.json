@@ -2,30 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Debug Current File",
             "type": "node",
             "request": "launch",
-            "name": "Jest All",
             "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
             "runtimeArgs": [
-                "--experimental-vm-modules"
-            ],
-            "args": [
-                "-i",
-            ],
-            "internalConsoleOptions": "openOnSessionStart"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest Current File",
-            "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
-            "runtimeArgs": [
-                "--experimental-vm-modules"
+                "--experimental-vm-modules",
+                "--inspect-brk"
             ],
             "args": [
                 "-i",
                 "${fileBasenameNoExtension}"
             ],
+            "sourceMaps": true,
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+            "smartStep": true,
             "internalConsoleOptions": "openOnSessionStart",
         }
     ]

@@ -1,11 +1,12 @@
 import { complect, data, trait } from '@mlhaufe/brevity'
+import { Mappable as BaseMappable } from '../Mappable.mjs'
 
 /**
  * A list is a linear collection of elements of the same type
  */
-const ListData = data((List, T) => ({
+const ListData = data((T) => ({
     Nil: {},
-    Cons: { head: T, tail: List(T) }
+    Cons: { head: T, tail: ListData(T) }
 }))
 
 /**
@@ -181,7 +182,7 @@ const LengthTrait = trait('length', {
  * @example
  * list(1, 2, 3).map((x) => x * 2) // list(2, 4, 6)
  */
-const MapTrait = trait('map', {
+const Mappable = trait(BaseMappable, 'map', {
     Nil(self) { return self },
     Cons({ head, tail }, fn) { return this.Cons(fn(head), tail.map(fn)) }
 })
@@ -285,7 +286,7 @@ const ZipWithTrait = trait('zipWith', {
  */
 export const List = complect(ListData, [
     AppendTrait, AtTrait, ConcatTrait, FilterTrait, FirstTrait, FoldLeftTrait,
-    FoldRightTrait, JoinTrait, LastTrait, LengthTrait, MapTrait, ReverseTrait,
+    FoldRightTrait, JoinTrait, LastTrait, LengthTrait, Mappable, ReverseTrait,
     ScanLeftTrait, ScanRightTrait, TakeTrait, TakeWhileTrait, ZipWithTrait
 ])
 
